@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Questions>
+@{
+    ViewData["Title"] = "ListQuestion";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Sorular</h1>
+<a href="/Admin/EditListQuestion" class="btn btn-primary mb-1">Geri</a>
+
+    <div class="row">
+        <div class="col-md-8">
+            @foreach (var item in Model)
+            {
+                <div class="row">
+                    <div class="col-md-12 border">
+                        <label asp-for="@item.Question" class="col-md-2 col-form-label">@item.Question</label>
+                        <a href="/admin/editquestion/@item.Id" class="btn btn-primary float-right">Düzenle</a>
+                        <form style="float:right; width:auto;" asp-controller="Admin" asp-action="DeleteQuestion" method="post">
+                            <input type="hidden" name="Id" value="@item.Id" />
+                            <input type="hidden" name="LessonId" value="@item.LessonId" />
+                            <button type="submit" class="btn btn-danger">Sil</button>
+                        </form>
+                    </div>
+                </div>
+            }
+        </div>
+        </div>
+

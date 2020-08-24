@@ -1,0 +1,204 @@
+﻿@model QuestionsVM
+@{
+    ViewData["Title"] = "AddQuestion";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .labels {
+        position: relative;
+        float: left;
+        width: 50px;
+        text-align: left;
+        color: red;
+        margin: 10px 0px
+    }
+
+    .inputs {
+        position: relative;
+        float: left;
+        width: calc(100% - 55px);
+        margin: 10px 0px;
+    }
+
+    .soruTop {
+        margin-top: 50px;
+    }
+
+    body {
+        width: 60%;
+        left: 20%;
+        margin-bottom: 100px;
+    }
+
+    .sabitButton1 {
+        position: fixed;
+        z-index: 9999;
+        left: 145px;
+        top: 215px;
+    }
+
+    .sabitButton2 {
+        position: fixed;
+        z-index: 9999;
+        left: 280px;
+        top: 215px;
+    }
+
+    h1 {
+        width: 100%;
+        float: left;
+        text-align: center;
+    }
+
+    .radioBox {
+    }
+</style>
+<h1>Soru Ekle</h1>
+<h2 style="width:100%;text-align:center;">@TempData["message"]</h2>
+
+@if (ViewBag.Lessons != null)
+{
+    <button class="btn btn-primary sabitButton1">Bir Tane Daha</button>
+    <div class="FormSetting">
+        @using (Html.BeginForm("AddQuestion", "Admin", FormMethod.Post))
+        {
+            <button type="submit" class="btn btn-primary sabitButton2">Kaydet</button>
+            <p>Dersin Adı</p>
+            @foreach (var item in (List<Lesson>)ViewBag.Lessons)
+            {
+
+                <div class="radioBox">
+                    <input type="radio" name="lessonId" value="@item.Id" id="lesson@(item.Id)" required />
+                    <label for="category@(item.Id)">@item.LessonName</label>
+                </div>
+            }
+
+            <label asp-for="Questions[0].Question" class="labels soruTop">Soru</label>
+
+            <input asp-for="Questions[0].Question" class="Question inputs soruTop" required />
+
+
+
+            <label asp-for="Questions[0].Option1" class="labels">A</label>
+
+            <input asp-for="Questions[0].Option1" class="Question inputs" required />
+
+
+
+            <label asp-for="Questions[0].Option2" class="labels">B</label>
+
+            <input asp-for="Questions[0].Option2" class="Question inputs" required />
+
+
+
+            <label asp-for="Questions[0].Option3" class="labels">C</label>
+
+            <input asp-for="Questions[0].Option3" class="Question inputs" required />
+
+
+
+            <label asp-for="Questions[0].Option4" class="labels">D</label>
+
+            <input asp-for="Questions[0].Option4" class="Question inputs" required />
+
+
+        }
+    </div>
+}
+else
+{
+    <h2>ÖNCE DERS GİRMENİZ GEREKMEKTEDİR</h2>
+}
+
+
+<script>
+    document.getElementsByTagName("button")[0].addEventListener("click", function () {
+        var elements = document.getElementsByClassName("Question inputs soruTop")
+        var count = elements.length
+
+        var newQuestionLabel = document.createElement("label")
+        var newOptions1Label = document.createElement("label")
+        var newOptions2Label = document.createElement("label")
+        var newOptions3Label = document.createElement("label")
+        var newOptions4Label = document.createElement("label")
+
+        var newQuestionInput = document.createElement("input")
+        var newOptions1Input = document.createElement("input")
+        var newOptions2Input = document.createElement("input")
+        var newOptions3Input = document.createElement("input")
+        var newOptions4Input = document.createElement("input")
+
+
+        newQuestionLabel.setAttribute("for", "Questions_" + count + "__Question")
+        newOptions1Label.setAttribute("for", "Questions_" + count + "__Option1")
+        newOptions2Label.setAttribute("for", "Questions_" + count + "__Option2")
+        newOptions3Label.setAttribute("for", "Questions_" + count + "__Option3")
+        newOptions4Label.setAttribute("for", "Questions_" + count + "__Option4")
+
+
+        newQuestionLabel.innerHTML = "Soru"
+        newOptions1Label.innerHTML = "A"
+        newOptions2Label.innerHTML = "B"
+        newOptions3Label.innerHTML = "C"
+        newOptions4Label.innerHTML = "D"
+
+
+        newQuestionLabel.setAttribute("class", "labels soruTop")
+        newOptions1Label.setAttribute("class", "labels")
+        newOptions2Label.setAttribute("class", "labels")
+        newOptions3Label.setAttribute("class", "labels")
+        newOptions4Label.setAttribute("class", "labels")
+
+
+        newQuestionInput.setAttribute("id", "Questions_" + count + "__Question")
+        newOptions1Input.setAttribute("id", "Questions_" + count + "__Option1")
+        newOptions2Input.setAttribute("id", "Questions_" + count + "__Option2")
+        newOptions3Input.setAttribute("id", "Questions_" + count + "__Option3")
+        newOptions4Input.setAttribute("id", "Questions_" + count + "__Option4")
+
+
+        newQuestionInput.setAttribute("class", "Question inputs soruTop")
+        newOptions1Input.setAttribute("class", "Question inputs")
+        newOptions2Input.setAttribute("class", "Question inputs")
+        newOptions3Input.setAttribute("class", "Question inputs")
+        newOptions4Input.setAttribute("class", "Question inputs")
+
+
+        newQuestionInput.setAttribute("name", "Questions[" + count + "].Question")
+        newOptions1Input.setAttribute("name", "Questions[" + count + "].Option1")
+        newOptions2Input.setAttribute("name", "Questions[" + count + "].Option2")
+        newOptions3Input.setAttribute("name", "Questions[" + count + "].Option3")
+        newOptions4Input.setAttribute("name", "Questions[" + count + "].Option4")
+
+
+
+        newQuestionInput.setAttribute("type", "text")
+        newOptions1Input.setAttribute("type", "text")
+        newOptions2Input.setAttribute("type", "text")
+        newOptions3Input.setAttribute("type", "text")
+        newOptions4Input.setAttribute("type", "text")
+
+        newQuestionInput.setAttribute("required", "")
+        newOptions1Input.setAttribute("required", "")
+        newOptions2Input.setAttribute("required", "")
+        newOptions3Input.setAttribute("required", "")
+        newOptions4Input.setAttribute("required", "")
+
+        document.getElementsByTagName("form")[0].append(newQuestionLabel)
+        document.getElementsByTagName("form")[0].append(newQuestionInput)
+        document.getElementsByTagName("form")[0].append(document.createElement("br"))
+        document.getElementsByTagName("form")[0].append(newOptions1Label)
+        document.getElementsByTagName("form")[0].append(newOptions1Input)
+        document.getElementsByTagName("form")[0].append(document.createElement("br"))
+        document.getElementsByTagName("form")[0].append(newOptions2Label)
+        document.getElementsByTagName("form")[0].append(newOptions2Input)
+        document.getElementsByTagName("form")[0].append(document.createElement("br"))
+        document.getElementsByTagName("form")[0].append(newOptions3Label)
+        document.getElementsByTagName("form")[0].append(newOptions3Input)
+        document.getElementsByTagName("form")[0].append(document.createElement("br"))
+        document.getElementsByTagName("form")[0].append(newOptions4Label)
+        document.getElementsByTagName("form")[0].append(newOptions4Input)
+        document.getElementsByTagName("form")[0].append(document.createElement("br"))
+
+    })
+</script>

@@ -1,0 +1,28 @@
+﻿@model RoleModel
+@{
+    ViewData["Title"] = "AddRole";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Role Ekle</h1>
+<form name="form" asp-controller="Admin" asp-action="AddRole" method="post">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="form-group row">
+                <label asp-for="RoleName" class="col-md-2 col-form-label">Role Adı</label>
+                <div class="col-md-10">
+                    <input asp-for="RoleName" class="form-control" />
+                    <span asp-validation-for="RoleName" class="text-danger"></span>
+                </div>
+            </div>
+            
+            <div class="form-group row">
+                <div class="col-md-10 offset-md-2">
+                    <button type="submit" class="btn btn-primary">Kaydet</button>
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</form>

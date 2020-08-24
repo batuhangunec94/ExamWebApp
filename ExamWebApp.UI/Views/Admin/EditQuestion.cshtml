@@ -1,0 +1,69 @@
+﻿@model QuestionsDTO
+@{
+    ViewData["Title"] = "EditQuestion";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Soruları Düzenleme</h1>
+
+
+<form method="post" asp-controller="Admin" asp-action="EditQuestion" name="form">
+    <div class="row">
+        <input type="hidden" asp-for="Id" value="@Model.Id" />
+        
+        <div class="col-md-8">
+            @foreach (var item in (List<Lesson>)ViewBag.Lessons)
+            {
+
+                <div class="radioBox">
+                    <input type="radio" name="lessonId" value="@item.Id" id="lesson@(item.Id)" required />
+                    <label for="lesson@(item.Id)">@item.LessonName</label>
+                </div>
+            }
+            <input type="hidden" asp-for="urlId" value="@Model.urlId" />
+            <div class="form-group row">
+                <label asp-for="@Model.Question" class="col-md-2 col-form-label">Soru</label>
+                <div class="col-md-10">
+                    <input asp-for="Question" value="@Model.Question" class="form-control" />
+                    <span asp-validation-for="Question" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="@Model.Option1" class="col-md-2 col-form-label">A</label>
+                <div class="col-md-10">
+                    <input asp-for="@Model.Option1" value="@Model.Option1" class="form-control" />
+                    <span asp-validation-for="@Model.Option1" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="@Model.Option2" class="col-md-2 col-form-label">B</label>
+                <div class="col-md-10">
+                    <input asp-for="@Model.Option2" value="@Model.Option2" class="form-control" />
+                    <span asp-validation-for="@Model.Option2" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="@Model.Option3" class="col-md-2 col-form-label">C</label>
+                <div class="col-md-10">
+                    <input asp-for="@Model.Option3" value="@Model.Option3" class="form-control" />
+                    <span asp-validation-for="@Model.Option3" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="@Model.Option4" class="col-md-2 col-form-label">D</label>
+                <div class="col-md-10">
+                    <input asp-for="@Model.Option4" value="@Model.Option4" class="form-control" />
+                    <span asp-validation-for="@Model.Option4" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-10 offset-md-2">
+                    <button type="submit" class="btn btn-success">Kaydet</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+</form>
+

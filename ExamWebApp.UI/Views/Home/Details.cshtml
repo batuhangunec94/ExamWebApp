@@ -1,0 +1,61 @@
+﻿@model LessonDetailDTO
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div class="container">
+    <div class="row">
+        
+        <div class="col-md-9">
+            <h1>Ders Adı</h1>
+            <h4 class="mb-3">
+                @Model.Lesson.LessonName
+            </h4>
+            <hr />
+            
+            
+
+            
+            <div class="Fiyat">
+
+
+                <h4 class="FiyatSettings">
+                    @Model.Lesson.Price TL
+                </h4>
+            </div>
+            <div>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    if (Model.StudentId == null)
+                    {
+                        <form asp-controller="User" asp-action="AddExam" method="post">
+                            <input type="hidden" name="lessonId" value="@Model.Lesson.Id" />
+                            <input type="hidden" name="userName" value="@User.Identity.Name" />
+                            <button type="submit" class="btn btn-primary btn-lg">Ekle</button>
+                        </form>
+                    }
+                    else
+                    {
+                        
+                            <a class="btn btn-primary" href="/User/StartExam/@Model.Lesson.Id">Sınava Git</a>
+
+                    }
+                    
+
+                }
+                else
+                {
+                    <h4>Giriş Yapınız </h4>
+                }
+            </div>
+            <div>
+            </div>
+            
+
+
+        </div>
+    </div>
+</div>

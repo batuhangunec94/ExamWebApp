@@ -1,0 +1,67 @@
+﻿@model List<Lesson>
+@{
+    ViewData["Title"] = "EditListQuestion";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Düzenlemek İstediğiniz Dersin Kategorisini Seçiniz</h1>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <td scope="col">
+                Ders Adı
+            </td>
+            <td scope="col">
+                Oluşturulduğu Tarih
+            </td>
+            <td scope="col">
+                Sınav Başlangıç
+            </td>
+            <td scope="col">
+                Sınav Bitiş
+            </td>
+            <td scope="col">
+                Fiyat
+            </td>
+            <td scope="col">
+                Oluşturan Öğretmen
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @item.LessonName
+                </td>
+                <td>
+                    @item.TransactionTime
+                </td>
+                <td>
+                    @item.StartingDate
+                </td>
+                <td>
+                    @item.EndDate
+                </td>
+                <td>
+                    @item.Price TL
+                </td>
+                <td>
+                    Pek Yakında
+                </td>
+                <td>
+                    <a href="/Admin/AddQuestionReply/@item.Id" class="btn btn-primary">Cevaplara Git</a>
+                </td>
+                <td>
+                     
+                        <a href="/Admin/ListQuestion/@item.Id" class="btn btn-primary">Sorulara Git</a>
+                    
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>

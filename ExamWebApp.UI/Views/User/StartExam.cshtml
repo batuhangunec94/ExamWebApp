@@ -1,0 +1,43 @@
+﻿@model Exam
+@{
+    ViewData["Title"] = "StartExam";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <form name="form" asp-controller="User" asp-action="StartExam" method="post">
+        <div class="row">
+            <div class="col-md-8">
+                <h2>Kalan Süre @Model.Time</h2>
+                <label>Kalan Süreniz @Model.Time</label>
+                <input type="hidden" asp-for="Time" value="@Model.Time" />
+                <input type="hidden" value="@Model.StudentId" asp-for="StudentId" />
+                <input type="hidden" value="@Model.LessonId" asp-for="LessonId" />
+
+                <div class="form-group row">
+                    <p>SORU</p>
+                    <label class="col-md-2 col-form-label">@Model.Question</label>
+                    <input type="hidden" asp-for="Id" value="@Model.Id" />
+                    <div class="radioBox">
+                        <input type="radio" asp-for="Reply" value="@Model.Option1" id="@Model.Option1" required />
+
+                        <label>@Model.Option1</label>
+                        <input type="radio" asp-for="Reply" value="@Model.Option2" id="@Model.Option2" required />
+                        <label>@Model.Option2</label>
+                        <input type="radio" asp-for="Reply" value="@Model.Option3" id="@Model.Option3" required />
+                        <label>@Model.Option3</label>
+                        <input type="radio" asp-for="Reply" value="@Model.Option4" id="@Model.Option4" required />
+                        <label>@Model.Option4</label>
+                        <input type="radio" asp-for="Reply" value="@Model.Option5" id="@Model.Option5" required />
+                        <label>@Model.Option5</label>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-10 offset-md-2">
+                        <button type="submit" class="btn btn-primary">Kaydet</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+

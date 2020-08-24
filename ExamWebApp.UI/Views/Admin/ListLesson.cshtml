@@ -1,0 +1,67 @@
+﻿@model List<Lesson>
+@{
+    ViewData["Title"] = "ListLesson";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Ders Listesi</h1>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <td scope="col">
+                Ders Adı
+            </td>
+            <td scope="col">
+                Oluşturulduğu Tarih
+            </td>
+            <td scope="col">
+                Sınav Başlangıç
+            </td>
+            <td scope="col">
+                Sınav Bitiş
+            </td>
+            <td scope="col">
+                Fiyat
+            </td>
+            <td scope="col">
+                Oluşturan Öğretmen
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+        
+            @foreach (var item in Model)
+            {<tr>
+
+    <td>
+        @item.LessonName
+    </td>
+    <td>
+        @item.TransactionTime
+    </td>
+    <td>
+        @item.StartingDate
+    </td>
+    <td>
+        @item.EndDate
+    </td>
+    <td>
+        @item.Price TL
+    </td>
+    <td>
+        Pek Yakında
+    </td>
+    <td>
+        <a href="/Admin/EditLesson/@item.Id" class="btn btn-primary">Edit</a>
+    </td>
+    <td>
+        <form asp-controller="Admin" asp-action="DeleteLesson" method="post">
+            <input type="hidden" name="Id" value="@item.Id" />
+            <button class="btn btn-primary" asp-controller="Admin" asp-action="DeleteLesson">Delete</button>
+        </form>
+    </td>
+</tr>
+    }
+
+    </tbody>
+</table>

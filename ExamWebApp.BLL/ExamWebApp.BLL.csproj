@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ExamWebApp.DAL\ExamWebApp.DAL.csproj" />
+    <ProjectReference Include="..\ExamWebApp.Entities\ExamWebApp.Entities.csproj" />
+  </ItemGroup>
+
+</Project>

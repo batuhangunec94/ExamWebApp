@@ -1,0 +1,58 @@
+﻿@model List<ExamResult>
+@{
+    ViewData["Title"] = "ListResult";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Sonuçlarınız</h1>
+@if (Model.Count == 0)
+{
+    <h2>Daha Önce Hiç Sınava Girmemişssiniz</h2>
+}
+else
+{
+    <table>
+        <thead>
+            <tr>
+                <td>
+                    
+                </td>
+                <td>
+                    
+                </td>
+                <td>
+                    
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                
+            </tr>
+        </tbody>
+    </table>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Ders Adı</th>
+                <th scope="col">Sonuç</th>
+                <th scope="col">Sınav Giriş Tarihi</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+
+                    
+                    <th>@item.ExamName</th>
+                    <td>@item.Result</td>
+                    <td>@item.TransactionTime</td>
+                    
+                </tr>
+            }
+        </tbody>
+    </table>
+
+}

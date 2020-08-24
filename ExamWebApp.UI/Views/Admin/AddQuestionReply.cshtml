@@ -1,0 +1,38 @@
+﻿@model List<Questions>
+@{
+    ViewData["Title"] = "AddQuestionReply";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>AddQuestionReply</h1>
+
+<form name="form" asp-controller="Admin" asp-action="AddQuestionReply" method="post">
+    <div class="row">
+        <div class="col-md-8">
+            @for (var i = 0; i < Model.Count; i++)
+            {
+                
+
+                <div class="form-group row">
+                    <label class="col-md-2 col-form-label">@Model[i].Question</label>
+                    <input type="hidden" asp-for="@Model[i].Id" value="@Model[i].Id" />
+                    <div class="radioBox">
+                        <input type="radio" asp-for="@Model[i].Reply" value="@Model[i].Option1" id="@Model[i].Option1" required />
+                        <label>@Model[i].Option1</label>
+                        <input type="radio" asp-for="@Model[i].Reply" value="@Model[i].Option2" id="@Model[i].Option2" required />
+                        <label>@Model[i].Option2</label>
+                        <input type="radio" asp-for="@Model[i].Reply" value="@Model[i].Option3" id="@Model[i].Option3" required />
+                        <label>@Model[i].Option3</label>
+                        <input type="radio" asp-for="@Model[i].Reply" value="@Model[i].Option4" id="@Model[i].Option4" required />
+                        <label>@Model[i].Option4</label>
+                    </div>
+                </div>
+            }
+            <div class="form-group row">
+                <div class="col-md-10 offset-md-2">
+                    <button type="submit" class="btn btn-primary">Kaydet</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,21 @@
+﻿@model LessonVM
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (Model.Lessons.Count == 0)
+{
+    <h2>Şuanda Sınav Yok</h2>
+}
+else
+{
+    @foreach (var item in Model.Lessons)
+    {
+
+        <partial name="_LessonHomePage" for="@item" />
+    }
+
+}
+
+

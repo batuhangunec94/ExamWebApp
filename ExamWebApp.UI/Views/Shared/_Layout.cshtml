@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <style>
+        body{
+            width:80%;
+            float:left;
+            position:relative;
+            left:10%;
+        }
+    </style>
+    <link href="~/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    
+
+
+    <partial name="_Navbar" />
+
+    @RenderBody()
+
+
+    <script src="~/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/jquery/dist/jquery.min.js"></script>
+    <script src="~/bootstrap/dist/js/bootstrap.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+﻿@model List<Exam>
+@{
+    ViewData["Title"] = "ListExam";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Sınavların</h1>
+<br />
+@if (Model.Select(x => x.Reply) == null)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <td>
+                    Ders Adı
+                </td>
+                <td>
+                    Bitiş Tarihi
+                </td>
+                <td>
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                @foreach (var item in Model.Select(x => x.Lesson))
+                {
+                    if (item.EndDate < DateTime.Now)
+                    {
+                        <td>
+                            @item.LessonName
+                        </td>
+                        <td>
+                            @item.LessonName
+                        </td>
+                        <td>
+                            <a href="/User/StartingExam">Sınava Başla</a>
+                        </td>
+                    }
+                }
+            </tr>
+        </tbody>
+    </table>
+}
+else
+{
+    <h2>Sınavınız Bulunmamaktadır</h2>
+}
+
